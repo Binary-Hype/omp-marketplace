@@ -1,0 +1,22 @@
+{
+  "name": "octo-pi",
+  "version": "1.0.2",
+  "description": "Multi-model OMP workflows for debate, brainstorming, and sourced research. Registers /debate, /brainstorm, and /research commands plus Octopus tools for multi-model rounds, sourced research, and follow-up orchestration.",
+  "author": {
+    "name": "Tobias Kokesch",
+    "email": "hallo@binary-hype.com"
+  },
+  "homepage": "https://github.com/Binary-Hype/omp-marketplace",
+  "repository": "https://github.com/Binary-Hype/omp-marketplace",
+  "license": "GPL-3.0",
+  "keywords": [
+    "omp",
+    "multi-model",
+    "debate",
+    "brainstorm",
+    "research",
+    "ai-workflows",
+    "typescript",
+    "developer-tools"
+  ]
+}

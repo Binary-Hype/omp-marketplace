@@ -1,0 +1,41 @@
+{
+  "name": "octo-pi",
+  "private": true,
+  "version": "1.0.2",
+  "description": "Multi-model OMP workflows for debate, brainstorming, and sourced research.",
+  "license": "GPL-3.0",
+  "type": "module",
+  "keywords": [
+    "omp",
+    "multi-model",
+    "debate",
+    "brainstorm",
+    "research",
+    "ai-workflows",
+    "typescript",
+    "developer-tools"
+  ],
+  "scripts": {
+    "test": "bun test",
+    "typecheck": "tsc --noEmit"
+  },
+  "omp": {
+    "name": "octo-pi",
+    "description": "Multi-model OMP workflows for debate, brainstorming, and sourced research.",
+    "extensions": [
+      "./src/main.ts"
+    ]
+  },
+  "homepage": "https://github.com/Binary-Hype/omp-marketplace",
+  "repository": "https://github.com/Binary-Hype/omp-marketplace",
+  "peerDependencies": {
+    "@oh-my-pi/pi-coding-agent": "^15.8.0",
+    "@oh-my-pi/pi-tui": "^15.8.0"
+  },
+  "devDependencies": {
+    "@oh-my-pi/pi-coding-agent": "^15.8.0",
+    "@oh-my-pi/pi-tui": "^15.8.0",
+    "@types/bun": "latest",
+    "typescript": "^5.7.0"
+  }
+}
