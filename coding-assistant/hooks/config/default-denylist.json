@@ -1,0 +1,20 @@
+{
+  "deny": [
+    ".env", ".env.*",
+    "*.pem", "*.key", "*.p12", "*.pfx", "*.crt",
+    "id_rsa*", "id_ed25519*", "id_ecdsa*", "id_dsa*",
+    "known_hosts",
+    "*.keystore", "*.jks", "*.truststore",
+    ".npmrc", ".netrc", ".htpasswd", ".pgpass",
+    ".vault-token", "vault.yml", "vault.yaml",
+    "secrets.yml", "secrets.yaml", "secrets.json",
+    "*.secret", "*.secrets",
+    "credentials.json", "service-account*.json",
+    ".docker/config.json",
+    "kubeconfig", "wp-config.php", "auth.json"
+  ],
+  "allow": [
+    ".env.example", ".env.dist", ".env.template",
+    "*.pem.example", "*.key.example"
+  ]
+}

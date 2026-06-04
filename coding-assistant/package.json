@@ -1,0 +1,28 @@
+{
+  "name": "coding-assistant",
+  "version": "1.0.0",
+  "description": "Lean coding assistant focused on code quality, security, and correctness.",
+  "license": "GPL-3.0",
+  "private": true,
+  "keywords": [
+    "code-quality",
+    "code-review",
+    "testing",
+    "api-design",
+    "security",
+    "database",
+    "dependencies",
+    "merge-conflict",
+    "humanizer",
+    "promote-prs"
+  ],
+  "omp": {
+    "name": "coding-assistant",
+    "description": "Lean coding assistant focused on code quality, security, and correctness.",
+    "extensions": [
+      "./hooks/pre/core-safety.ts"
+    ]
+  },
+  "homepage": "https://github.com/Binary-Hype/omp-marketplace",
+  "repository": "https://github.com/Binary-Hype/omp-marketplace"
+}

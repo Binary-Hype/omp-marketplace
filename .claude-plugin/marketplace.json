@@ -1,0 +1,45 @@
+{
+  "name": "binary-hype-omp",
+  "description": "OMP plugins by Binary Hype \u2014 focused skills and safety hooks for professional software engineering workflows.",
+  "owner": {
+    "name": "Tobias Kokesch",
+    "email": "hallo@binary-hype.com"
+  },
+  "plugins": [
+    {
+      "name": "coding-assistant",
+      "source": "./coding-assistant",
+      "description": "An OMP coding assistant focused on code quality, security, and correctness. Provides production-minded skills plus a pre-tool-call safety hook for secret file access, credential commits, unsafe 1Password CLI usage, and oversized write payloads.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Tobias Kokesch",
+        "email": "hallo@binary-hype.com"
+      },
+      "homepage": "https://github.com/Binary-Hype/omp-marketplace",
+      "repository": "https://github.com/Binary-Hype/omp-marketplace",
+      "license": "GPL-3.0",
+      "keywords": [
+        "skills",
+        "code-quality",
+        "code-review",
+        "refactoring",
+        "testing",
+        "api-design",
+        "security",
+        "git",
+        "database",
+        "php",
+        "laravel",
+        "shopware",
+        "javascript",
+        "dependencies",
+        "vulnerability-scanning",
+        "pull-request",
+        "merge-conflict",
+        "humanizer",
+        "promote-prs"
+      ],
+      "category": "developer-tools"
+    }
+  ]
+}
