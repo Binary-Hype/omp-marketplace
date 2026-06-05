@@ -35,7 +35,7 @@ interface HookAPI {
     event: "tool_call",
     handler: (
       event: ToolCallEvent,
-      ctx: HookContext
+      ctx?: HookContext
     ) => Promise<BlockResult | undefined> | BlockResult | undefined
   ): void;
 }
@@ -816,7 +816,7 @@ function formatBashApproval(command: string, analysis: BashAnalysis): string {
   ].join("\n");
 }
 
-async function checkDangerousBash(event: ToolCallEvent, ctx: HookContext): Promise<BlockResult | undefined> {
+async function checkDangerousBash(event: ToolCallEvent, ctx?: HookContext): Promise<BlockResult | undefined> {
   if (tool(event) !== "bash") return undefined;
   const command = inputString(event.input, ["command"]);
   if (!command) return undefined;
@@ -833,7 +833,7 @@ async function checkDangerousBash(event: ToolCallEvent, ctx: HookContext): Promi
     };
   }
 
-  if (!ctx.ui?.confirm) {
+  if (ctx?.ui?.confirm === undefined) {
     return {
       block: true,
       reason: `[Hook] APPROVAL REQUIRED: Dangerous bash command requires user approval.\n${details}`,

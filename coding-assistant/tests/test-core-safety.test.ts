@@ -8,14 +8,14 @@ type ToolCallEvent = { toolName: string; input: Record<string, unknown> };
 type BlockResult = { block: true; reason: string } | undefined;
 type HookContext = { ui?: { confirm(title: string, message: string): Promise<boolean> } };
 
-let handler: ((event: ToolCallEvent, ctx: HookContext) => Promise<BlockResult> | BlockResult) | undefined;
+let handler: ((event: ToolCallEvent, ctx?: HookContext) => Promise<BlockResult> | BlockResult) | undefined;
 let tempDir = "";
 let originalHome: string | undefined;
 let originalCache: string | undefined;
 let originalRoot: string | undefined;
 let originalCwd = "";
 
-function invoke(event: ToolCallEvent, ctx: HookContext = {}): Promise<BlockResult> | BlockResult {
+function invoke(event: ToolCallEvent, ctx?: HookContext): Promise<BlockResult> | BlockResult {
   handler = undefined;
   register({
     on(eventName, callback) {
@@ -114,6 +114,13 @@ describe("OMP core safety hook", () => {
       expect(result?.reason).toContain("APPROVAL REQUIRED");
       expect(result?.reason).toContain(ruleId);
     }
+  });
+
+  test("fails closed for dangerous bash without hook context", async () => {
+    const result = await invoke({ toolName: "bash", input: { command: "rm -rf build" } });
+    expect(result?.block).toBe(true);
+    expect(result?.reason).toContain("APPROVAL REQUIRED");
+    expect(result?.reason).toContain("recursive-delete");
   });
 
   test("allows dangerous bash when user approves", async () => {
