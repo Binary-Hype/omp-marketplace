@@ -37,11 +37,11 @@ If `git diff` is empty (nothing unstaged), report that clearly and offer fallbac
 
 | Invocation | Scope |
 | --- | --- |
-| `/quality-check` | Unstaged working-tree changes (default) |
-| `/quality-check staged` | Staged changes (`git diff --staged`) |
-| `/quality-check all` | Unstaged + staged combined |
-| `/quality-check <ref>..<ref>` | A diff range (e.g. `main..HEAD`, `HEAD~3..HEAD`) |
-| `/quality-check <path>` | One or more specific files or directories |
+| `/skill:quality-check` | Unstaged working-tree changes (default) |
+| `/skill:quality-check staged` | Staged changes (`git diff --staged`) |
+| `/skill:quality-check all` | Unstaged + staged combined |
+| `/skill:quality-check main..HEAD` | A diff range |
+| `/skill:quality-check app/Services/Foo.php` | One or more specific files or directories |
 
 When scanning a diff, read the surrounding context of each changed file (not just the hunk). Diffs alone hide too much to judge patterns, SOLID, or readability.
 
@@ -160,11 +160,11 @@ If a dimension produced no findings, say so explicitly (e.g. `Performance: no an
 ## How to Invoke
 
 ```
-/quality-check                       # default: unstaged working-tree changes
-/quality-check staged                # staged changes only
-/quality-check all                   # unstaged + staged
-/quality-check main..HEAD            # diff range
-/quality-check app/Services/Foo.php  # specific file or path
+/skill:quality-check                       # default: unstaged working-tree changes
+/skill:quality-check staged                # staged changes only
+/skill:quality-check all                   # unstaged + staged
+/skill:quality-check main..HEAD            # diff range
+/skill:quality-check app/Services/Foo.php  # specific file or path
 ```
 
 ## What This Skill Does NOT Do

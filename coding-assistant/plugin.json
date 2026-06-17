@@ -1,6 +1,6 @@
 {
   "name": "coding-assistant",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Lean OMP coding assistant skills for code quality, API design, database review, dependency auditing, merge conflict resolution, PR promotion, testing, and humanized writing.",
   "author": {
     "name": "Tobias Kokesch",

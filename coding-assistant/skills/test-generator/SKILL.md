@@ -68,17 +68,17 @@ This skill provides comprehensive test generation by:
 Simply invoke the skill when you need tests:
 
 ```
-/test-generator
+/skill:test-generator
 ```
 
 Or request specific tests:
 
 ```
-/test-generator Create tests for UserController
+/skill:test-generator Create tests for UserController
 ```
 
 ```
-/test-generator Generate factory and tests for Post model
+/skill:test-generator Generate factory and tests for Post model
 ```
 
 ```
@@ -86,7 +86,7 @@ I need feature tests for my authentication system
 ```
 
 ```
-/test-generator Write unit tests for DiscountCalculator service
+/skill:test-generator Write unit tests for DiscountCalculator service
 ```
 
 ## Test Generation Process

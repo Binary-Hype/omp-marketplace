@@ -18,7 +18,7 @@ A lean OMP coding assistant focused on code quality, security, and correctness t
 
 Plugin surfaces:
 
-- Marketplace-loaded skills invoked as `/skill:<name>`:
+- Marketplace-loaded skills are invoked with singular `/skill:<name>` syntax:
   - `/skill:api-design`
   - `/skill:commit-message`
   - `/skill:database-reviewer`

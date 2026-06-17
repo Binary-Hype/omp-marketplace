@@ -4,7 +4,7 @@
 
 **User Request:**
 ```
-/test-generator Create unit tests for DiscountCalculator service
+/skill:test-generator Create unit tests for DiscountCalculator service
 ```
 
 **Output:**
@@ -118,7 +118,7 @@ describe('DiscountCalculator', function () {
 
 **User Request:**
 ```
-/test-generator Create tests for authentication endpoints
+/skill:test-generator Create tests for authentication endpoints
 ```
 
 **Output:**

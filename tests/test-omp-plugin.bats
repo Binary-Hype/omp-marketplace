@@ -33,7 +33,7 @@ teardown() {
     const root = process.argv[1];
     const repository = "https://github.com/Binary-Hype/omp-marketplace";
     const expected = new Map([
-      ["coding-assistant", { source: "./coding-assistant", version: "1.2.0" }],
+      ["coding-assistant", { source: "./coding-assistant", version: "1.2.1" }],
     ]);
     const catalog = JSON.parse(fs.readFileSync(path.join(root, ".claude-plugin/marketplace.json"), "utf8"));
 
@@ -117,11 +117,60 @@ teardown() {
     const readme = fs.readFileSync(path.join(root, "README.md"), "utf8");
 
     if (!readme.includes("OMP-specific marketplace for Binary Hype OMP skills.")) throw new Error("README missing skills-only opening sentence");
-    if (!readme.includes("Marketplace-loaded skills invoked as `/skill:<name>`:")) throw new Error("README missing marketplace-loaded skills heading");
+    if (!readme.includes("Marketplace-loaded skills are invoked with singular `/skill:<name>` syntax:")) throw new Error("README missing marketplace-loaded skills heading");
 
     for (const forbidden of ["core-safety", "safety hook", "Safety configuration", "denylist", "OMP_SECURITY_CACHE_DIR", "hooks/pre"]) {
       if (readme.includes(forbidden)) throw new Error(`README still advertises removed safety extension text: ${forbidden}`);
     }
+  ' "$REPO_ROOT"
+
+  [ "$status" -eq 0 ]
+}
+
+@test "skill docs use OMP skill invocation syntax" {
+  run node -e '
+    const fs = require("fs");
+    const path = require("path");
+    const root = process.argv[1];
+    const expectedSkills = [
+      "api-design",
+      "commit-message",
+      "database-reviewer",
+      "dependency-auditor",
+      "grill-me",
+      "humanizer",
+      "merge-conflict-resolver",
+      "promote-prs",
+      "quality-check",
+      "test-generator",
+    ];
+    const skillsRoot = path.join(root, "coding-assistant/skills");
+    const markdownFiles = [];
+
+    function walk(dir) {
+      for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+        const full = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          walk(full);
+        } else if (entry.name.endsWith(".md")) {
+          markdownFiles.push(full);
+        }
+      }
+    }
+
+    walk(skillsRoot);
+
+    const legacyInvocation = new RegExp(`/(${expectedSkills.join("|")})(?=$|[^A-Za-z0-9_-])`);
+    for (const file of markdownFiles) {
+      const text = fs.readFileSync(file, "utf8");
+      const relative = path.relative(root, file);
+      if (text.includes("/skills:")) throw new Error(`${relative} contains /skills:`);
+      if (legacyInvocation.test(text)) throw new Error(`${relative} contains legacy direct invocation`);
+    }
+
+    const commitSkill = fs.readFileSync(path.join(skillsRoot, "commit-message/SKILL.md"), "utf8");
+    const contract = "When `/skill:commit-message` injects this skill body, treat the injection itself as a direct user request: create a commit message for the repository'\''s already-staged changes.";
+    if (!commitSkill.includes(contract)) throw new Error("commit-message invocation contract missing");
   ' "$REPO_ROOT"
 
   [ "$status" -eq 0 ]
