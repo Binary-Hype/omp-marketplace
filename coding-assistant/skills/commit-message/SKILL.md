@@ -193,8 +193,10 @@ When invoked, perform these steps in order and do not wait for an additional ins
 
 5. **Present Message and Ask for Confirmation**
    - Display the generated commit message in full (subject and body)
-   - Present two clear options: `Yes, commit with this message` and `No, revise it`
-   - Wait for the user's answer before committing
+   - Use the `ask` tool for the confirmation prompt whenever it is available
+   - The `ask` tool prompt must include the exact proposed message text
+   - Present exactly two options: `Yes, commit with this message` and `No, revise it`
+   - Wait for the user's explicit answer before committing
    - **ABSOLUTELY NO AI ATTRIBUTION**: Do NOT add AI coding tools attribution, Co-Authored-By lines, "Generated with" footers, emojis, or ANY indication that AI was involved. The commit must appear 100% human-written.
 
 6. **Create Commit or Regenerate Based on Response**
